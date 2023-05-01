@@ -1,0 +1,335 @@
+body {
+  padding-top: 80px;
+  word-wrap: break-word;
+  background-color: rgb(129, 155, 241);
+  text-align: center;
+}
+img {
+  height: 200px;
+}
+
+.anime,
+.result {
+  text-align: center;
+}
+
+.result {
+  background-color: white;
+}
+
+.todo{
+  border: 1px solid royalblue;
+ 
+}
+
+button{
+  margin: 10px;
+}
+
+.form-group{
+  background-color: rgb(137, 200, 235);
+}
+
+.loginBody{
+  background-color:  rgb(129, 155, 241);
+}
+
+.newsFeed{
+  background-color:white;
+}
+
+
+.nav1 {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.nav1 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav1 ul li {
+  margin-left: 20px;
+}
+
+.nav1 ul li:first-child {
+  margin-left: 0;
+}
+
+.nav1 ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.nav1 ul li a:hover {
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  width: 80%;
+}
+
+label {
+  font-weight: bold;
+}
+
+.label1, .label2, .label3 {
+  margin-bottom: 10px;
+}
+
+input[type="file"],
+textarea,
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+
+.pitch {
+  background-color: #F9F9F9;
+  padding: 50px;
+  text-align: center;
+}
+
+.foodTravelSection {
+  margin-bottom: 40px;
+}
+
+.foodTravelSection h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.foodTravelSection p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.foodTravelSection a {
+  font-size: 24px;
+  padding: 12px 30px;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: #FFF;
+  text-decoration: none;
+}
+
+.foodTravelSection a:hover {
+  background-color: #0069D9;
+}
+
+
+.news-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.post {
+  display: flex;
+  gap: 20px;
+}
+
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.post-image {
+  margin-top: 10px;
+}
+
+.post-image img {
+  width: 20%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.post-caption {
+  margin-top: 10px;
+}
+
+.post-actions {
+  margin-top: 10px;
+}
+
+.like-btn, .reply-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.like-btn:hover, .reply-btn:hover {
+  background-color: #dcdcdc;
+}
+
+.feedback {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating {
+  color: #ff9800;
+}
+
+.actions button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 0;
+}
+
+.actions button:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  /* Header */
+  header {
+    height: auto;
+  }
+
+  .logo {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .main-nav {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .main-nav li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background-position: center center;
+    background-size: cover;
+    height: 400px;
+    text-align: center;
+  }
+
+  .hero-section h1 {
+    font-size: 36px;
+    margin-top: 80px;
+  }
+
+  .hero-section a {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  /* Features Section */
+  .features {
+    padding: 50px 0;
+  }
+
+  .feature-item {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .feature-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 20px;
+  }
+
+  .footer-nav {
+    text-align: center;
+  }
+
+  .footer-nav li {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+
+
+
+
