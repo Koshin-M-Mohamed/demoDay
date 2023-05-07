@@ -1,27 +1,25 @@
 body {
-  padding-top: 80px;
-  word-wrap: break-word;
-  text-align: center;
-}
-img {
-  height: 200px;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
 }
 
-.anime,
-.result {
+footer {
+  background-color: #f8f9fa;
+  padding: 20px 0;
   text-align: center;
 }
 
-.result {
-  background-color: white;
+footer a {
+  color: #6c757d;
+  text-decoration: none;
 }
 
-.todo {
-  border: 1px solid royalblue;
+footer a:hover {
+  color: #343a40;
 }
 
-button {
-  margin: 10px;
+.navbar {
+  background-color: #f8f9fa;
 }
 
 .form-group {

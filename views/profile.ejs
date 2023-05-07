@@ -1,113 +1,182 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title></title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food and Travel With Me!</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    />
 
-    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="profile.css" />
   </head>
-    <body class="newsFeed">
-      <!-- Navigation bar at the top of the page -->
-      <nav class="nav1">
-        <ul>
-          <li><a href="#">Post</a></li>
-          <li><a href="#">Message</a></li>
-          <li><a href="#">Meet Up!</a></li>
-        </ul>
+  <body>
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Food and Travel With Me! </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Get A Travel Plan</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/">Settings</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
       </nav>
-      
-      <!-- Form to post a photo and a message -->
-      <form>
-        <label class= "label1" for="photo">Upload Photo:</label>
-        <input type="file" id="photo" name="photo"><br><br>
-        
-        <label class= "label2"for="message">Write a Post:</label>
-        <textarea id="message" name="message"></textarea><br><br>
-        
-        <label class="label3"   for="stars">Leave a Review:</label>
-        <select id="stars" name="stars">
-          <option value="1">1 star</option>
-          <option value="2">2 stars</option>
-          <option value="3">3 stars</option>
-          <option value="4">4 stars</option>
-          <option value="5">5 stars</option>
-        </select><br><br>
-        
-        <button class="sub" type="submit">Post</button>
-      </form>
+    </header>
 
+    <!-- Form to post a photo and a message -->
+    <form action="/addPost" method="post">
+      <!-- <label class="label1" for="photo">Upload Photo:</label>
+      <input type="file" id="photo" name="photo" /><br /><br /> -->
+
+      <label class="label2" for="message">Write a Post:</label>
+      <textarea id="message" name="postText"></textarea>
+
+      <label class="label3" for="stars">Leave a Review:</label>
+      <select id="stars" name="stars">
+        <option value="1">1 star</option>
+        <option value="2">2 stars</option>
+        <option value="3">3 stars</option>
+        <option value="4">4 stars</option>
+        <option value="5">5 stars</option>
+      </select>
+
+      <button class="sub" type="submit">Post</button>
+    </form>
+
+    <div class="news-feed">
+
+      <% for(var i=0; i<result.length; i++) {%>
+
+        <div class="post">
+          <div class="profile-picture">
+            <img
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+              alt="Profile Picture"
+            />
+          </div>
+          <div class="post-content">
+            <div class="post-header">
+              <h3 class="name"><%= result[i].email %></h3>
+            </div>
+            <div class="post-image">
+             
+            </div>
+            <div class="post-caption">
+              <p>
+                <%= result[i].post %>
+              </p>
+            </div>
+            <div class="feedback">
+              <div class="rating">
+                <% for (var j=0; j<result[i].stars; j++) { %>
+                  <i class="fa fa-star"></i>
+              <% } %>
+
+              </div>
+              <div class="actions">
+
+
+                <% if (user.local.email=== result[i].email) { %>
+                  <button id="delete" data-id="<%= result[i].id %>"><i class="fa fa-trash-o"></i> Delete</button>
   
-      <div class="news-feed">
-        <div class="post">
-          <div class="profile-picture">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Picture">
-          </div>
-          <div class="post-content">
-            <div class="post-header">
-              <h3 class="name">John Doe</h3>
-            </div>
-            <div class="post-image">
-              <img src="https://cdn.britannica.com/98/235798-050-3C3BA15D/Hamburger-and-french-fries-paper-box.jpg" alt="Post Image">
-            </div>
-            <div class="post-caption">
-              <p> "I recently joined 'Food and Travel With Me!' and it has completely changed the way I travel and 
-              experience food. The community is filled with like-minded individuals who share their tips and recommendations on the best local cuisines and hidden gems in every corner of the world. The platform is easy to use and I have found some amazing travel partners and food buddies through it. The team behind the website is also very responsive and helpful. 
-              I highly recommend joining this community to anyone who is passionate about food and travel!"</p>
-                        </div>
-            <div class="feedback">
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-              </div>
-              <div class="actions">
+                  <%} else { %>
+                  
+                  <% } 
+                  
+                  
+                  %>
+                
                 <button class="like-btn"><i class="fa fa-heart"></i> Like</button>
-                <button class="reply-btn"><i class="fa fa-reply"></i> Reply</button>
+                <button class="reply-btn">
+                  <i class="fa fa-reply"></i> Reply
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div class="post">
-          <div class="profile-picture">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Picture">
-          </div>
-          <div class="post-content">
-            <div class="post-header">
-              <h3 class="name">John Doe</h3>
-            </div>
-            <div class="post-image">
-              <img src="https://cdn.britannica.com/98/235798-050-3C3BA15D/Hamburger-and-french-fries-paper-box.jpg" alt="Post Image">
-            </div>
-            <div class="post-caption">
-              <p> "I recently joined 'Food and Travel With Me!' and it has completely changed the way I travel and 
-              experience food. The community is filled with like-minded individuals who share their tips and recommendations on the best local cuisines and hidden gems in every corner of the world. The platform is easy to use and I have found some amazing travel partners and food buddies through it. The team behind the website is also very responsive and helpful. 
-              I highly recommend joining this community to anyone who is passionate about food and travel!"</p>
-                        </div>
-            <div class="feedback">
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-              </div>
-              <div class="actions">
-                <button class="like-btn"><i class="fa fa-heart"></i> Like</button>
-                <button class="reply-btn"><i class="fa fa-reply"></i> Reply</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="/">home</a> 
 
 
 
-      </div>
       
 
 
-    </body>
-</html>
+       <% } %>
 
+
+    </div>
+
+
+
+
+    <footer>
+      <div class="container">
+        <div class="d-flex flex-column align-items-center">
+          <div class="mb-3">
+            <a
+              href="https://twitter.com/Koshinpro"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mx-2"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/koshin-mohamed"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mx-2"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a
+              href="https://github.com/Koshin-M-Mohamed"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mx-2"
+              ><i class="bi bi-github"></i
+            ></a>
+          </div>
+          <p>
+            &copy; 2023 Food and Travel With Me! App! - All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 module.exports = function (app, passport, db) {
   // normal routes ===============================================================
+  const ObjectId = require("mongodb").ObjectID;
 
   // show the home page (will also have our login links)
   app.get("/", function (req, res) {
@@ -8,8 +9,8 @@ module.exports = function (app, passport, db) {
 
   // PROFILE SECTION =========================
   app.get("/profile", isLoggedIn, function (req, res) {
-    db.collection("todo")
-      .find({ email: req.user.local.email})
+    db.collection("food")
+      .find()
       .toArray((err, result) => {
         if (err) return console.log(err);
         res.render("profile.ejs", {
@@ -29,9 +30,15 @@ module.exports = function (app, passport, db) {
 
   // message board routes ===============================================================
 
-  app.post("/addItem", (req, res) => {
-    db.collection("todo").save(
-      { todo: req.body.todo, email: req.user.local.email },
+  app.post("/addPost", (req, res) => {
+    console.log(req.body.stars);
+    db.collection("food").save(
+      {
+        post: req.body.postText,
+        email: req.user.local.email,
+        id: new ObjectId(),
+        stars: req.body.stars,
+      },
       (err, result) => {
         if (err) return console.log(err);
         console.log("saved to database");
@@ -40,24 +47,9 @@ module.exports = function (app, passport, db) {
     );
   });
 
-  // app.put('/messages', (req, res) => {
-  //   db.collection('messages')
-  //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-  //     $set: {
-  //       thumbUp:req.body.thumbUp + 1
-  //     }
-  //   }, {
-  //     sort: {_id: -1},
-  //     upsert: true
-  //   }, (err, result) => {
-  //     if (err) return res.send(err)
-  //     res.send(result)
-  //   })
-  // })
-
-  app.delete("/deleteItem", (req, res) => {
-    db.collection("todo").findOneAndDelete(
-      { todo: req.body.todo, email: req.user.local.email },
+  app.delete("/deletePost", (req, res) => {
+    db.collection("food").findOneAndDelete(
+      { id: ObjectId(req.body.id) },
       (err, result) => {
         if (err) return res.send(500, err);
         res.send("Message deleted!");

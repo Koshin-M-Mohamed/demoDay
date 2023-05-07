@@ -1,5 +1,5 @@
 // config/database.js
 module.exports = {
-  url: "mongodb+srv://koshinmongo:myMongo@cluster0.ozyrwol.mongodb.net/toDoList?retryWrites=true&w=majority",
-  dbName: "toDoList",
+  url: "mongodb+srv://koshinmongo:myMongo@cluster0.ozyrwol.mongodb.net/food?retryWrites=true&w=majority",
+  dbName: "foodß",
 };
