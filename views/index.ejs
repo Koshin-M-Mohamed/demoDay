@@ -1,101 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Simple landing page</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food and Travel With Me!</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      href="vendors/owl-carousel/css/owl.carousel.min.css"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="index.css">
+    <link
+      rel="stylesheet"
+      href="vendors/owl-carousel/css/owl.theme.default.css"
+    />
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="vendors/aos/css/aos.css" />
+    <link rel="stylesheet" href="css/style.min.css" />
   </head>
-  <body>
-    <header class="header">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Food and Travel With Me!</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/signup">Sign Up</a>
-            </li>
-          </ul>
+  <body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+    <header id="header-section">
+      <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+        <div class="container">
+          <div class="navbar-brand-wrapper d-flex w-100">
+            <h1>TRAVEL APP</h1>
+            <button
+              class="navbar-toggler ml-auto"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="mdi mdi-menu navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div
+            class="collapse navbar-collapse navbar-menu-wrapper"
+            id="navbarSupportedContent"
+          >
+            <ul
+              class="navbar-nav align-items-lg-center align-items-start ml-auto"
+            >
+              <li
+                class="d-flex align-items-center justify-content-between pl-4 pl-lg-0"
+              >
+                <div class="navbar-collapse-logo">
+                  <h1>TRAVEL APP</h1>
+                </div>
+                <button
+                  class="navbar-toggler close-button"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+                </button>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#header-section"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Signup</a>
+              </li>
+
+              <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+                <button
+                  class="btn btn-info"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  Contact Us
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
-    <section class="hero">
+    <div class="banner">
       <div class="container">
-        <h1 class="display-4">Food and Travel With Me!</h1>
-        <p>Join our community of food and travel enthusiasts!</p>
-        <a class="btn btn-primary btn-lg" href="/signup" role="button"
-          >Get Started</a
-        >
+        <h1 class="font-weight-semibold">Food and Travel With Me!</h1>
+        <h6 class="font-weight-normal text-muted pb-3">
+          Join our community of food and travel enthusiasts!
+        </h6>
+        <div>
+          <a href="/signup"
+            ><button class="btn btn-opacity-light mr-1">Get started</button></a
+          >
+        </div>
+        <img
+          src="images/undraw_travel_together_re_kjf2.svg"
+          alt=""
+          class="img-fluid"
+          width="300px"
+        />
       </div>
-    </section>
-    <section class="benefits">
+    </div>
+    <div class="content-wrapper">
       <div class="container">
-        <div class="row">
-          <div class="col-md-4 benefit">
-            <img
-              src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?fit=crop&w=500&h=333"
-              alt="Connect"
-            />
+        <section class="features-overview" id="features-section">
+          <div class="content-header">
+            <h2>Why you should join our community</h2>
+            <h6 class="section-subtitle text-muted">
+              One theme that serves as an easy-to-use operational toolkit<br />that
+              meets customer's needs.
+            </h6>
+          </div>
+          <div class="d-md-flex justify-content-between">
+            <div class="grid-margin d-flex justify-content-start">
+              <div class="features-width">
+                <img
+                  src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?fit=crop&w=200&h=133"
+                  alt=""
+                  class="img-icons"
+                />
+                <h5 class="py-3">Connect</h5>
+                <p class="text-muted">
+                  Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                  egeabus consectetuer turpis, suspendisse.
+                </p>
+                <a href="#"><p class="readmore-link">Readmore</p></a>
+              </div>
+            </div>
+            <div class="grid-margin d-flex justify-content-center">
+              <div class="features-width">
+                <img
+                  src="https://images.unsplash.com/photo-1564135624576-c5c88640f235?fit=crop&w=200&h=133"
+                  alt=""
+                  class="img-icons"
+                />
+                <h5 class="py-3">Adventure</h5>
+                <p class="text-muted">
+                  Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                  egeabus consectetuer turpis, suspendisse.
+                </p>
+                <a href="#"><p class="readmore-link">Readmore</p></a>
+              </div>
+            </div>
+            <div class="grid-margin d-flex justify-content-end">
+              <div class="features-width">
+                <img
+                  src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?fit=crop&w=200&h=133"
+                  alt=""
+                  class="img-icons"
+                />
+                <h5 class="py-3">Content<br />Marketing</h5>
+                <p class="text-muted">
+                  Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                  egeabus consectetuer turpis, suspendisse.
+                </p>
+                <a href="#"><p class="readmore-link">Readmore</p></a>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <h3>Connect</h3>
-            <p>
-              Meet like-minded foodies and travelers to share your experiences,
-              tips, and recommendations.
-            </p>
+        <section class="customer-feedback" id="feedback-section">
+          <div class="row">
+            <div class="col-12 text-center pb-5">
+              <h2>What our customers have to say</h2>
+              <h6 class="section-subtitle text-muted m-0">
+                Lorem ipsum dolor sit amet, tincidunt vestibulum.
+              </h6>
+            </div>
+            <div class="owl-carousel owl-theme grid-margin">
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img
+                      src="images/face2.jpg"
+                      width="89"
+                      height="89"
+                      alt=""
+                      class="img-customer"
+                    />
+                    <p class="m-0 py-3 text-muted">
+                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                      egeabus consectetuer turpis, suspendisse.
+                    </p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Tony Martinez</h6>
+                    <h6 class="customer-designation text-muted m-0">
+                      Marketing Manager
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img
+                      src="images/face3.jpg"
+                      width="89"
+                      height="89"
+                      alt=""
+                      class="img-customer"
+                    />
+                    <p class="m-0 py-3 text-muted">
+                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                      egeabus consectetuer turpis, suspendisse.
+                    </p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Sophia Armstrong</h6>
+                    <h6 class="customer-designation text-muted m-0">
+                      Marketing Manager
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img
+                      src="images/face20.jpg"
+                      width="89"
+                      height="89"
+                      alt=""
+                      class="img-customer"
+                    />
+                    <p class="m-0 py-3 text-muted">
+                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                      egeabus consectetuer turpis, suspendisse.
+                    </p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Cody Lambert</h6>
+                    <h6 class="customer-designation text-muted m-0">
+                      Marketing Manager
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img
+                      src="images/face15.jpg"
+                      width="89"
+                      height="89"
+                      alt=""
+                      class="img-customer"
+                    />
+                    <p class="m-0 py-3 text-muted">
+                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                      egeabus consectetuer turpis, suspendisse.
+                    </p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Cody Lambert</h6>
+                    <h6 class="customer-designation text-muted m-0">
+                      Marketing Manager
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img
+                      src="images/face16.jpg"
+                      width="89"
+                      height="89"
+                      alt=""
+                      class="img-customer"
+                    />
+                    <p class="m-0 py-3 text-muted">
+                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                      egeabus consectetuer turpis, suspendisse.
+                    </p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Cody Lambert</h6>
+                    <h6 class="customer-designation text-muted m-0">
+                      Marketing Manager
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img
+                      src="images/face1.jpg"
+                      width="89"
+                      height="89"
+                      alt=""
+                      class="img-customer"
+                    />
+                    <p class="m-0 py-3 text-muted">
+                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                      egeabus consectetuer turpis, suspendisse.
+                    </p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Tony Martinez</h6>
+                    <h6 class="customer-designation text-muted m-0">
+                      Marketing Manager
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img
+                      src="images/face2.jpg"
+                      width="89"
+                      height="89"
+                      alt=""
+                      class="img-customer"
+                    />
+                    <p class="m-0 py-3 text-muted">
+                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                      egeabus consectetuer turpis, suspendisse.
+                    </p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Tony Martinez</h6>
+                    <h6 class="customer-designation text-muted m-0">
+                      Marketing Manager
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img
+                      src="images/face3.jpg"
+                      width="89"
+                      height="89"
+                      alt=""
+                      class="img-customer"
+                    />
+                    <p class="m-0 py-3 text-muted">
+                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                      egeabus consectetuer turpis, suspendisse.
+                    </p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Sophia Armstrong</h6>
+                    <h6 class="customer-designation text-muted m-0">
+                      Marketing Manager
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img
+                      src="images/face20.jpg"
+                      width="89"
+                      height="89"
+                      alt=""
+                      class="img-customer"
+                    />
+                    <p class="m-0 py-3 text-muted">
+                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
+                      egeabus consectetuer turpis, suspendisse.
+                    </p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Cody Lambert</h6>
+                    <h6 class="customer-designation text-muted m-0">
+                      Marketing Manager
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-md-4 benefit">
-            <img
-              src="https://images.unsplash.com/photo-1564135624576-c5c88640f235"
-              alt="Discover"
-            />
-            <h3>Discover</h3>
-            <p>
-              Explore new places and discover the best local dishes from all
-              around the world.
-            </p>
-          </div>
-          <div class="col-md-4 benefit">
-            <img
-              src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad"
-              alt="Adventure"
-            />
-            <h3>Adventure</h3>
-            <p>
-              Combine your love for food and travel into one unforgettable
-              adventure with our community.
-            </p>
+        </section>
+
+        <footer class="border-top">
+          <p class="text-center text-muted pt-4">
+            Copyright © 2023<a
+              href="https://www.bootstrapdash.com/"
+              class="px-1"
+              >Travel App.</a
+            >All rights reserved.
+          </p>
+        </footer>
+        <!-- Modal for Contact - us Button -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Contact Us</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="Name"
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="Email-1"
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="Message">Message</label>
+                    <textarea
+                      class="form-control"
+                      id="Message"
+                      placeholder="Enter your Message"
+                    ></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-success">Submit</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-    <footer>
-      <div class="container">
-        <p>&copy; 2023 Food and Travel With Me! - All Rights Reserved.</p>
-      </div>
-    </footer>
+    </div>
+    <script src="vendors/jquery/jquery.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="vendors/aos/js/aos.js"></script>
+    <script src="js/landingpage.js"></script>
   </body>
 </html>

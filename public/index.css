@@ -33,3 +33,17 @@ footer {
 .navbar {
   background-color: rgb(195, 199, 205) !important;
 }
+
+.section-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.sub-section {
+  text-align: center;
+}
+.sub-section img {
+  width: 60%;
+  margin-bottom: 20px;
+}

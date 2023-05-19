@@ -18,10 +18,6 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-              <% if (message.length > 0) { %>
-              <div class="alert alert-danger"><%= message %></div>
-              <% } %>
-
               <h5 class="card-title text-center">Sign Up</h5>
               <p>Signup to start using the app right away</p>
 
@@ -31,6 +27,17 @@
                 alt=""
               />
               <form action="/signup" method="post">
+                <div class="mb-3">
+                  <label for="userName" class="form-label">User Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="userName"
+                    name="userName"
+                    placeholder="Username"
+                  />
+                </div>
+
                 <div class="mb-3">
                   <label for="inputEmail" class="form-label"
                     >Email address</label
@@ -53,6 +60,19 @@
                     placeholder="Enter password"
                   />
                 </div>
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label"
+                    >Confirm Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="confirm password"
+                  />
+                </div>
+
                 <div class="d-grid">
                   <button type="submit" class="btn btn-primary">Sign Up</button>
                 </div>
