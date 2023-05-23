@@ -32,13 +32,14 @@
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="/profile.css" />
   </head>
+
   <body>
     <header class="header">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/profile">
-          <img src="images/logo.png" width="190px" alt="" />
+          <img src="/images/logo.png" width="190px" alt="" />
         </a>
         <button
           class="navbar-toggler"
@@ -60,13 +61,11 @@
               <a class="nav-link" href="/profile">Feed</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/recommendations"
-                >Recommendations</a
-              >
+              <a class="nav-link" href="/recommendations">Recommendations</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/settings">Settings</a>
+              <a class="nav-link active" href="/settings">Settings</a>
             </li>
 
             <li class="nav-item">
@@ -77,33 +76,59 @@
       </nav>
     </header>
 
-    <div
-      class="container d-flex justify-content-center vh-100 custom-container"
-    >
-      <div class="text-center">
-        <form action="/recommendation" method="post">
-          <h1>Let us help you decide what to do in a particular location</h1>
-          <input
-            type="text"
-            name="location"
-            id=""
-            width="200px"
-            class="form-control"
-            placeholder="what location are you interested"
-          />
-          <br />
-          <button type="submit" class="btn btn-primary">
-            Get a recommendation
-          </button>
-        </form>
+    <div class="messageContainer">
+      <section class="settingSection">
+        <h1 class="settingTitle">PROFILE SETTINGS</h1>
+        <div class="box">
+          <div class="imgDiv">
+            <img
+              class="profileImage rounded-circle"
+              src="<%- user.profileImage -%>"
+              alt=""
+              width="45px"
+              height="45px"
+            />
+          </div>
 
-        <div>
-          <% if (typeof aiResponse !== 'undefined' && aiResponse) { %>
+          <div class="info">
+            <h3>Email: <%- user.email -%></h3>
+            <h3>Name: <%- user.userName -%></h3>
+          </div>
+          <!-- Trigger/Open The Modal -->
+          <% if (locals.messages.errors) { %> <% messages.errors.forEach( el =>
+          { %>
+          <div class="alert alert-danger"><%= el.msg %></div>
+          <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+          messages.info.forEach( el => { %>
+          <div class="alert alert-info"><%= el.msg %></div>
+          <% }) %> <% } %>
+          <button id="myBtn" class="btn-primary">Change Profile Picture</button>
 
-          <p><%= aiResponse %></p>
-          <% } %>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <form
+                action="/post/changeProfileImage?_method=PUT"
+                enctype="multipart/form-data"
+                method="POST"
+                class=""
+              >
+                <label for="imgUpload" class="form-label">Image</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="imageUpload"
+                  name="file"
+                  required
+                />
+                <button type="submit">Submit Post</button>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
 
     <footer>
@@ -136,7 +161,32 @@
         </div>
       </div>
     </footer>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
 
-    <script src="main.js"></script>
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
   </body>
 </html>

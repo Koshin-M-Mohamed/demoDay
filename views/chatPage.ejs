@@ -32,13 +32,14 @@
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="/chatPage.css" />
   </head>
+
   <body>
     <header class="header">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/profile">
-          <img src="images/logo.png" width="190px" alt="" />
+          <img src="/images/logo.png" width="190px" alt="" />
         </a>
         <button
           class="navbar-toggler"
@@ -60,9 +61,7 @@
               <a class="nav-link" href="/profile">Feed</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/recommendations"
-                >Recommendations</a
-              >
+              <a class="nav-link" href="/recommendations">Recommendations</a>
             </li>
 
             <li class="nav-item">
@@ -77,32 +76,89 @@
       </nav>
     </header>
 
-    <div
-      class="container d-flex justify-content-center vh-100 custom-container"
-    >
-      <div class="text-center">
-        <form action="/recommendation" method="post">
-          <h1>Let us help you decide what to do in a particular location</h1>
-          <input
-            type="text"
-            name="location"
-            id=""
-            width="200px"
-            class="form-control"
-            placeholder="what location are you interested"
-          />
-          <br />
-          <button type="submit" class="btn btn-primary">
-            Get a recommendation
-          </button>
-        </form>
+    <div class="messageContainer">
+      <h1>Private Chat</h1>
 
-        <div>
-          <% if (typeof aiResponse !== 'undefined' && aiResponse) { %>
+      <div class="messages">
+        <% chat.messages.forEach(function(message) { %>
+        <div class="message">
+          <p></p>
 
-          <p><%= aiResponse %></p>
+          <p class="block">
+            <img
+              src="<%= message.sender.profileImage %>"
+              alt=""
+              width="45px"
+              height="45px"
+              class="rounded-circle"
+            />
+            <strong
+              ><%= message.sender.userName %> at <%=
+              message.timestamp.toDateString() %> :</strong
+            >
+            <%= message.content %>
+          </p>
+
+          <% if (message.sender._id.toString() === userId1) { %>
+
+          <form
+            class="block"
+            action="/chatPage/chatMessageDelete?_method=DELETE"
+            method="POST"
+          >
+            <input
+              type="text"
+              id=""
+              name="chatId"
+              hidden
+              class="block"
+              value="<%= chat._id %>"
+            />
+            <input
+              type="text"
+              id=""
+              name="userId1"
+              hidden
+              class="block"
+              value="<%= userId1 %>"
+            />
+            <input
+              type="text"
+              id=""
+              name="userId2"
+              hidden
+              class="block"
+              value="<%= userId2 %>"
+            />
+            <input
+              class="block"
+              type="text"
+              name="messageId"
+              id=""
+              hidden
+              value="<%= message._id %>"
+            />
+            <button class="btn2 block fa fa-trash" type="submit">Delete</button>
+          </form>
           <% } %>
         </div>
+        <% }) %>
+      </div>
+
+      <form id="message-form" action="/chatPage/chatMessagePost" method="post">
+        <input
+          type="text"
+          name="message"
+          id="message-input"
+          placeholder="Type your message"
+        />
+        <input type="text" hidden name="userId1" value="<%= userId1 %>" />
+        <input type="text" hidden name="userId2" value="<%= userId2 %>" />
+
+        <button type="submit">Send</button>
+      </form>
+      <div class="text-center">
+        <div></div>
       </div>
     </div>
 
@@ -136,7 +192,5 @@
         </div>
       </div>
     </footer>
-
-    <script src="main.js"></script>
   </body>
 </html>

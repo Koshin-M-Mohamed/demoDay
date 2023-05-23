@@ -1,0 +1,102 @@
+body {
+  background-color: #eeeeee;
+  font-family: "Poppins", sans-serif;
+}
+
+.h7 {
+  font-size: 0.8rem;
+}
+
+.gedf-wrapper {
+  margin-top: 0.97rem;
+}
+
+@media (min-width: 992px) {
+  .gedf-main {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  .gedf-card {
+    margin-bottom: 2.77rem;
+  }
+}
+
+/**Reset Bootstrap*/
+.dropdown-toggle::after {
+  content: none;
+  display: none;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+.btn-space {
+  margin: 5px;
+}
+
+/* Style buttons */
+.btn2 {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 5px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 8px;
+  margin: 5px;
+}
+
+/* Darker background on mouse-over */
+.btn2:hover {
+  background-color: RoyalBlue;
+}
+
+.nav-link:hover {
+  background-color: black;
+  color: white !important;
+  border-bottom: 5px solid red;
+}
+
+.nav-link {
+  border-radius: 10px;
+}
+
+.custom-container {
+  border-radius: 10px;
+  margin: 10px auto;
+  background-color: #ffffff; /* Replace with your desired shade of grey */
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  max-height: 80vh;
+}
+
+.message {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  background-color: #cfcece;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 5px;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(255, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.block {
+  display: inline;
+}

@@ -63,7 +63,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/">Settings</a>
+              <a class="nav-link" href="/settings">Settings</a>
             </li>
 
             <li class="nav-item">
@@ -90,6 +90,8 @@
               
               </div>
               <% if (user && currentUserPage && String(user._id) !== String(currentUserPage._id)) { %>
+                <a href="/chatPage/<%= user._id %>-<%= currentUserPage._id %>"><button  class="btn btn-space btn-success" type="submit"><i class="fa fa-envelope"> </i>Message/Dm </button></a>
+
                 <% if (user && user.following && user.following.includes(String(currentUserPage._id))) { %>
                   <form
                   action="/unfollow/<%= currentUserPage._id %>?_method=DELETE"
@@ -235,7 +237,7 @@
               <% }) %>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Followers</h5>
+              <h5 class="card-title">Following</h5>
               <% allUsers.forEach(follower => { %>
                 <% if (follower.followers.includes(currentUserPage._id)) { %>
                 <div class="follower">

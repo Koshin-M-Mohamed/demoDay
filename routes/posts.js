@@ -11,5 +11,12 @@ router.post("/createPost", upload.single("file"), postsController.createPost);
 router.put("/likePost/:id", postsController.likePost);
 
 router.delete("/deletePost/:id", postsController.deletePost);
+router.delete("/deleteAccount", postsController.deleteAccount);
+
+router.put(
+  "/changeProfileImage",
+  upload.single("file"),
+  postsController.changeProfileImage
+);
 
 module.exports = router;

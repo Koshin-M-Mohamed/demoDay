@@ -27,6 +27,13 @@ module.exports = {
       console.log(err);
     }
   },
+  getSettingPage: async (req, res) => {
+    try {
+      res.render("settings.ejs", { user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getUserPage: async (req, res) => {
     try {
       const currentUserPage = await User.findById(req.params.userID);
@@ -139,6 +146,63 @@ module.exports = {
     } catch (error) {
       console.error("Error generating travel recommendations:");
       throw error;
+    }
+  },
+
+  deleteAccount: async (req, res) => {
+    try {
+      await Post.deleteMany({ user: req.user.id });
+      // Update followers' following list
+
+      const deletedUser = await User.findByIdAndDelete(req.user.id).populate(
+        "following"
+      );
+
+      // Remove deletedUser from the following lists of their followers
+      await User.updateMany(
+        { _id: { $in: deletedUser.followers } },
+        { $pull: { following: deletedUser._id } }
+      );
+
+      req.session.destroy((err) => {
+        if (err)
+          console.log(
+            "Error : Failed to destroy the session during logout.",
+            err
+          );
+        req.user = null;
+        res.redirect("/");
+      });
+    } catch (err) {
+      res.redirect("/");
+    }
+  },
+  changeProfileImage: async (req, res) => {
+    try {
+      //Upload image to cloudinary
+      if (req.file != undefined) {
+        const result = await cloudinary.uploader.upload(req.file.path);
+        await User.findOneAndUpdate(
+          { _id: req.user.id },
+          {
+            $set: { profileImage: result.secure_url },
+          }
+        );
+
+        // Update profile image URL in old posts
+        await Post.updateMany(
+          { user: req.user.id },
+          { $set: { profileImage: result.secure_url } }
+        );
+      } else if (!req.file) {
+        req.flash("errors", {
+          msg: "File not supported, please try again with JPG, PNG, JPEG",
+        });
+        return res.redirect("/settings");
+      }
+      res.redirect(`/settings`);
+    } catch (err) {
+      console.log(err);
     }
   },
 };
