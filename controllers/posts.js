@@ -1,15 +1,24 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const User = require("../models/User");
+const ObjectId = require("mongodb").ObjectID;
+const axios = require("axios");
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
+      const allUsers = await User.find({ _id: { $ne: req.user._id } });
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      res.render("profile.ejs", {
+        posts: posts,
+        user: req.user,
+        allUsers: allUsers,
+      });
     } catch (err) {
       console.log(err);
     }
   },
+
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
@@ -18,10 +27,18 @@ module.exports = {
       console.log(err);
     }
   },
-  getPost: async (req, res) => {
+  getUserPage: async (req, res) => {
     try {
-      const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      const currentUserPage = await User.findById(req.params.userID);
+      const allUsers = await User.find({ _id: { $ne: req.params.userID } });
+
+      const post = await Post.find({ user: ObjectId(req.params.userID) });
+      res.render("userPage.ejs", {
+        posts: post,
+        user: req.user,
+        currentUserPage: currentUserPage,
+        allUsers,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -81,6 +98,47 @@ module.exports = {
       res.redirect("/profile");
     } catch (err) {
       res.redirect("/profile");
+    }
+  },
+  getRecommendations: (req, res) => {
+    res.render("recommendations.ejs");
+  },
+  postRecommendations: async (req, res) => {
+    console.log("sent recommendationn post");
+    let aiResponse;
+    let location = req.body.location;
+
+    try {
+      const prompt = `Inquire about travel recommendations for ${location}. interesting places to visit and food to try
+      `;
+
+      const response = await axios.post(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          model: "gpt-3.5-turbo",
+
+          messages: [
+            { role: "system", content: prompt },
+            { role: "user", content: "What are your recommendations?" },
+          ],
+          max_tokens: 3800,
+          temperature: 0.7,
+          n: 1,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.OPEN_AI_KEY}`,
+          },
+        }
+      );
+
+      aiResponse = response.data.choices[0].message.content;
+      console.log(aiResponse);
+      res.render("recommendations.ejs", { aiResponse });
+    } catch (error) {
+      console.error("Error generating travel recommendations:");
+      throw error;
     }
   },
 };

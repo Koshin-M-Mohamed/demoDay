@@ -133,3 +133,82 @@ exports.postSignup = (req, res, next) => {
     }
   );
 };
+
+(exports.followUser = async (req, res) => {
+  try {
+    const userToFollowId = req.params.userId;
+    const currentUser = req.user;
+
+    if (!currentUser) {
+      // Handle unauthorized access
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    // Find the user to follow
+    const userToFollow = await User.findById(userToFollowId);
+
+    if (!userToFollow) {
+      // Handle user not found
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Check if the current user is already following the target user
+    const isFollowing = userToFollow.followers.includes(currentUser._id);
+
+    if (isFollowing) {
+      // User is already being followed, so unfollow them
+      userToFollow.followers.pull(currentUser._id);
+      currentUser.following.pull(userToFollowId);
+    } else {
+      // User is not being followed, so follow them
+      userToFollow.followers.push(currentUser._id);
+      currentUser.following.push(userToFollowId);
+    }
+
+    // Save the changes
+    await userToFollow.save();
+    await currentUser.save();
+
+    res.redirect(`/${userToFollowId}`);
+  } catch (err) {
+    console.log(err);
+    res.redirect("/"); // Handle the error as desired
+  }
+}),
+  (exports.unfollowUser = async (req, res) => {
+    try {
+      const userToUnfollowId = req.params.userId;
+      const currentUser = req.user;
+
+      if (!currentUser) {
+        // Handle unauthorized access
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+
+      // Find the user to unfollow
+      const userToUnfollow = await User.findById(userToUnfollowId);
+
+      if (!userToUnfollow) {
+        // Handle user not found
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      // Check if the current user is already following the target user
+      const isFollowing = userToUnfollow.followers.includes(currentUser._id);
+
+      if (isFollowing) {
+        // User is being followed, so unfollow them
+        userToUnfollow.followers.pull(currentUser._id);
+        currentUser.following.pull(userToUnfollowId);
+
+        // Save the changes
+        await userToUnfollow.save();
+        await currentUser.save();
+      }
+
+      res.redirect(`/${userToUnfollowId}`);
+    } catch (err) {
+      console.log(err);
+      res.redirect("/"); // Handle the error as desired
+    }
+  });

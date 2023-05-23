@@ -1,5 +1,6 @@
 body {
   background-color: #eeeeee;
+  font-family: "Poppins", sans-serif;
 }
 
 .h7 {
@@ -32,4 +33,37 @@ header {
 
 .btn-space {
   margin: 5px;
+}
+
+/* Style buttons */
+.btn2 {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 5px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 8px;
+  margin: 5px;
+}
+
+/* Darker background on mouse-over */
+.btn2:hover {
+  background-color: RoyalBlue;
+}
+
+.nav-link:hover {
+  background-color: black;
+  color: white !important;
+  border-bottom: 5px solid red;
+}
+
+.nav-link {
+  border-radius: 10px;
+}
+
+.custom-container {
+  border-radius: 10px;
+  margin: 10px auto;
+  background-color: #ffffff; /* Replace with your desired shade of grey */
 }

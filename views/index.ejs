@@ -16,13 +16,19 @@
     <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="vendors/aos/css/aos.css" />
     <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+    <% if (typeof message !== 'undefined' && message) { %>
+      <script>
+        alert("<%= message %>");
+      </script>
+    <% } %>
     <header id="header-section">
       <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
         <div class="container">
           <div class="navbar-brand-wrapper d-flex w-100">
-            <h1>TRAVEL APP</h1>
+            <img src="images/logo.png" width="190px" alt="" />
             <button
               class="navbar-toggler ml-auto"
               type="button"
@@ -45,9 +51,7 @@
               <li
                 class="d-flex align-items-center justify-content-between pl-4 pl-lg-0"
               >
-                <div class="navbar-collapse-logo">
-                  <h1>TRAVEL APP</h1>
-                </div>
+                <div class="navbar-collapse-logo"></div>
                 <button
                   class="navbar-toggler close-button"
                   type="button"
@@ -119,46 +123,59 @@
             <div class="grid-margin d-flex justify-content-start">
               <div class="features-width">
                 <img
-                  src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?fit=crop&w=200&h=133"
+                  src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?fit=crop&w=250&h=133"
                   alt=""
                   class="img-icons"
                 />
                 <h5 class="py-3">Connect</h5>
                 <p class="text-muted">
-                  Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                  egeabus consectetuer turpis, suspendisse.
+                  Join our food and travel community application to connect with
+                  fellow enthusiasts who share your love for exploration and
+                  diverse cuisines. Engage in conversations, share your travel
+                  experiences, and build meaningful connections with like-minded
+                  individuals worldwide. Connect with travel buddies, find local
+                  guides, and create lasting friendships that enhance your
+                  journey.
                 </p>
-                <a href="#"><p class="readmore-link">Readmore</p></a>
               </div>
             </div>
             <div class="grid-margin d-flex justify-content-center">
               <div class="features-width">
                 <img
-                  src="https://images.unsplash.com/photo-1564135624576-c5c88640f235?fit=crop&w=200&h=133"
+                  src="https://images.unsplash.com/photo-1564135624576-c5c88640f235?fit=crop&w=250&h=133"
                   alt=""
                   class="img-icons"
                 />
                 <h5 class="py-3">Adventure</h5>
                 <p class="text-muted">
-                  Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                  egeabus consectetuer turpis, suspendisse.
+                  Experience thrilling adventures and embrace the spirit of
+                  exploration through our food and travel community application.
+                  Discover off-the-beaten-path destinations, hidden gems, and
+                  exhilarating activities that satiate your thirst for
+                  adventure. Our platform inspires you to step out of your
+                  comfort zone, push boundaries, and create unforgettable
+                  memories that ignite your sense of adventure.
                 </p>
-                <a href="#"><p class="readmore-link">Readmore</p></a>
               </div>
             </div>
             <div class="grid-margin d-flex justify-content-end">
               <div class="features-width">
                 <img
-                  src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?fit=crop&w=200&h=133"
+                  src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?fit=crop&w=250&h=133"
                   alt=""
                   class="img-icons"
                 />
-                <h5 class="py-3">Content<br />Marketing</h5>
+                <h5 class="py-3">Discover</h5>
                 <p class="text-muted">
-                  Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                  egeabus consectetuer turpis, suspendisse.
+                  Uncover the wonders of the world and embark on an endless
+                  journey of discovery with our food and travel community
+                  application. Gain valuable insights from our diverse
+                  community, revealing the best destinations to visit, authentic
+                  local eateries to try, and hidden attractions that often go
+                  unnoticed. Immerse yourself in new cultures, broaden your
+                  horizons, and unlock a world of hidden treasures, all at your
+                  fingertips.
                 </p>
-                <a href="#"><p class="readmore-link">Readmore</p></a>
               </div>
             </div>
           </div>
@@ -168,9 +185,6 @@
           <div class="row">
             <div class="col-12 text-center pb-5">
               <h2>What our customers have to say</h2>
-              <h6 class="section-subtitle text-muted m-0">
-                Lorem ipsum dolor sit amet, tincidunt vestibulum.
-              </h6>
             </div>
             <div class="owl-carousel owl-theme grid-margin">
               <div class="card customer-cards">
@@ -184,8 +198,11 @@
                       class="img-customer"
                     />
                     <p class="m-0 py-3 text-muted">
-                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                      egeabus consectetuer turpis, suspendisse.
+                      Thanks to this travel community, I've connected with
+                      amazing fellow travelers who have become my lifelong
+                      friends. It's incredible how we bond over our shared love
+                      for exploring new places and trying delicious cuisines
+                      together!
                     </p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Tony Martinez</h6>
@@ -206,13 +223,15 @@
                       class="img-customer"
                     />
                     <p class="m-0 py-3 text-muted">
-                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                      egeabus consectetuer turpis, suspendisse.
+                      This platform has opened up a whole new world of adventure
+                      for me. I've discovered breathtaking destinations and
+                      thrilling activities that I would have never known about
+                      otherwise. It has truly ignited my sense of wanderlust
                     </p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Sophia Armstrong</h6>
                     <h6 class="customer-designation text-muted m-0">
-                      Marketing Manager
+                      Mountain Trekker
                     </h6>
                   </div>
                 </div>
@@ -228,13 +247,15 @@
                       class="img-customer"
                     />
                     <p class="m-0 py-3 text-muted">
-                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                      egeabus consectetuer turpis, suspendisse.
+                      I'm constantly amazed by the wealth of knowledge shared on
+                      this travel site. The recommendations I've received from
+                      other users have led me to incredible local spots and
+                      hidden gems that have made my trips unforgettable.
                     </p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Cody Lambert</h6>
                     <h6 class="customer-designation text-muted m-0">
-                      Marketing Manager
+                      Food Critic
                     </h6>
                   </div>
                 </div>
@@ -250,13 +271,16 @@
                       class="img-customer"
                     />
                     <p class="m-0 py-3 text-muted">
-                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                      egeabus consectetuer turpis, suspendisse.
+                      Being a part of this community has made my travel
+                      experiences so much more meaningful. I've had the
+                      opportunity to connect with locals who have shown me their
+                      city from a unique perspective, allowing me to immerse
+                      myself in their culture and traditions.
                     </p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Cody Lambert</h6>
                     <h6 class="customer-designation text-muted m-0">
-                      Marketing Manager
+                      Cultural Anthropologist
                     </h6>
                   </div>
                 </div>
@@ -272,8 +296,10 @@
                       class="img-customer"
                     />
                     <p class="m-0 py-3 text-muted">
-                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                      egeabus consectetuer turpis, suspendisse.
+                      I love how easy it is to use this platform to discover new
+                      destinations. The community provides valuable insights and
+                      firsthand experiences that have helped me plan my trips
+                      with confidence and avoid tourist traps.
                     </p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Cody Lambert</h6>
@@ -294,8 +320,11 @@
                       class="img-customer"
                     />
                     <p class="m-0 py-3 text-muted">
-                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                      egeabus consectetuer turpis, suspendisse.
+                      his travel community is like having a personal network of
+                      travel experts at my fingertips. I've received invaluable
+                      advice on everything from finding the best street food to
+                      planning multi-day hiking adventures. It has enhanced my
+                      travel experiences in countless ways.
                     </p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Tony Martinez</h6>
@@ -316,13 +345,16 @@
                       class="img-customer"
                     />
                     <p class="m-0 py-3 text-muted">
-                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                      egeabus consectetuer turpis, suspendisse.
+                      I can't thank this platform enough for introducing me to
+                      incredible culinary experiences during my travels. The
+                      local food recommendations shared by fellow food
+                      enthusiasts have allowed me to explore diverse flavors and
+                      indulge in authentic cuisines wherever I go.
                     </p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Tony Martinez</h6>
                     <h6 class="customer-designation text-muted m-0">
-                      Marketing Manager
+                      Photography Enthusiast
                     </h6>
                   </div>
                 </div>
@@ -338,13 +370,16 @@
                       class="img-customer"
                     />
                     <p class="m-0 py-3 text-muted">
-                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                      egeabus consectetuer turpis, suspendisse.
+                      Being a part of this travel community has not only
+                      satisfied my wanderlust but also sparked my curiosity to
+                      learn about different cultures. Through engaging
+                      conversations with fellow travelers, I've gained a deeper
+                      appreciation for the world's rich diversity.
                     </p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Sophia Armstrong</h6>
                     <h6 class="customer-designation text-muted m-0">
-                      Marketing Manager
+                      Outdoor Adventurer
                     </h6>
                   </div>
                 </div>
@@ -360,13 +395,16 @@
                       class="img-customer"
                     />
                     <p class="m-0 py-3 text-muted">
-                      Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce
-                      egeabus consectetuer turpis, suspendisse.
+                      This platform has become my go-to resource for travel
+                      inspiration. The stunning photos shared by fellow users
+                      never fail to captivate me and inspire my next adventure.
+                      It's like having a constant source of wanderlust fuel
+                      right in my pocket!
                     </p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Cody Lambert</h6>
                     <h6 class="customer-designation text-muted m-0">
-                      Marketing Manager
+                      Travel Enthusiast
                     </h6>
                   </div>
                 </div>
@@ -378,9 +416,8 @@
         <footer class="border-top">
           <p class="text-center text-muted pt-4">
             Copyright © 2023<a
-              href="https://www.bootstrapdash.com/"
               class="px-1"
-              >Travel App.</a
+              >Travel Haven.</a
             >All rights reserved.
           </p>
         </footer>
@@ -399,13 +436,14 @@
                 <h4 class="modal-title" id="exampleModalLabel">Contact Us</h4>
               </div>
               <div class="modal-body">
-                <form>
+                <form action="/message" method="post">
                   <div class="form-group">
                     <label for="Name">Name</label>
                     <input
                       type="text"
                       class="form-control"
                       id="Name"
+                      name="name"
                       placeholder="Name"
                     />
                   </div>
@@ -415,6 +453,7 @@
                       type="email"
                       class="form-control"
                       id="Email-1"
+                      name="email"
                       placeholder="Email"
                     />
                   </div>
@@ -423,10 +462,10 @@
                     <textarea
                       class="form-control"
                       id="Message"
+                      name="message"
                       placeholder="Enter your Message"
                     ></textarea>
                   </div>
-                </form>
               </div>
               <div class="modal-footer">
                 <button
@@ -436,13 +475,16 @@
                 >
                   Close
                 </button>
-                <button type="button" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
               </div>
+            </form>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+    
     <script src="vendors/jquery/jquery.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>

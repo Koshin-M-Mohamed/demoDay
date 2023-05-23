@@ -11,6 +11,18 @@ const UserSchema = new mongoose.Schema({
     type: String,
   },
   password: String,
+  followers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  following: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 // Password hash middleware.

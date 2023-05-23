@@ -3,13 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel Haven</title>
+    <title>Food and Travel With Me!</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -58,7 +56,7 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/profile"> Feed</a>
+              <a class="nav-link active" href="/profile">Feed</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/recommendations">Recommendations</a>
@@ -81,24 +79,44 @@
         <div class="col-md-3">
           <div class="card">
             <div class="card-body">
-              <img src="<%= user.profileImage %>" class="rounded-circle"
+              <img src="<%= currentUserPage.profileImage %>" class="rounded-circle"
               width="45px"
               height="45px">
-              <div class="h5"><a href="/<%= user._id %>">@<%= user.userName %></a></div>
-              <div class="h7 text-muted">email : <%= user.email %></div>
+              <div class="h5">@<%= currentUserPage.userName %></div>
+              <div class="h7 text-muted">email : <%= currentUserPage.email %></div>
               <div class="h7">
                 Developer of web applications, JavaScript, PHP, Java, Python,
                 Ruby, Java, Node.js, etc.
+              
               </div>
+              <% if (user && currentUserPage && String(user._id) !== String(currentUserPage._id)) { %>
+                <% if (user && user.following && user.following.includes(String(currentUserPage._id))) { %>
+                  <form
+                  action="/unfollow/<%= currentUserPage._id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button  class="btn btn-space btn-danger" type="submit">Unfollow </button>
+                </form>
+                  
+                <% } else { %>
+                  <form
+                  action="/follow/<%= currentUserPage._id %>?_method=POST"
+                  method="POST"
+                >
+                  <button  class="btn btn-space btn-primary" type="submit">Follow </button>
+                </form>
+                  
+                <% } %>
+              <% } %>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <div class="h6 text-muted">Followers</div>
-                <div class="h5"><%= user.followers.length %></div>
+                <div class="h5"><%= currentUserPage.followers.length %></div>
               </li>
               <li class="list-group-item">
                 <div class="h6 text-muted">Following</div>
-                <div class="h5"><%= user.following.length %></div>
+                <div class="h5"><%= currentUserPage.following.length %></div>
               </li>
             </ul>
           </div>
@@ -106,111 +124,8 @@
 
 
 
-
-
-
-
-
-
-
         <div class="col-md-6 gedf-main">
-          <!--- \\\\\\\Post-->
-          <div class="card gedf-card">
-            <div class="card-header">
-              <ul
-                class="nav nav-tabs card-header-tabs"
-                id="myTab"
-                role="tablist"
-              >
-                <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    id="posts-tab"
-                    data-toggle="tab"
-                    href="#posts"
-                    role="tab"
-                    aria-controls="posts"
-                    aria-selected="true"
-                    >Add a post</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="card-body">
-              <div class="tab-content" id="myTabContent">
-                <div
-                  class="tab-pane fade show active"
-                  id="posts"
-                  role="tabpanel"
-                  aria-labelledby="posts-tab"
-                >
-                  <form
-                    action="/post/createPost"
-                    enctype="multipart/form-data"
-                    method="POST"
-                    class="postForm"
-                  >
-                  <div class="form-group">
-                    <label class="sr-only" for="message">post</label>
-                    <textarea
-                      class="form-control"
-                      id="message"
-                      rows="3"
-                      name="postText"
-                      placeholder="Share your recent travel destination with pics!"
-                    ></textarea>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="label3" for="stars">Your rating:</label>
-                    <select id="stars" name="stars">
-                      <option value="1">1 star</option>
-                      <option value="2">2 stars</option>
-                      <option value="3">3 stars</option>
-                      <option value="4">4 stars</option>
-                      <option value="5">5 stars</option>
-                    </select>
-                  </div>
-
-                  <div class="custom-file">
-                    <input
-                      type="file"
-                      class="custom-file-input"
-                      id="customFile"
-                      name="file"
-                      
-                    />
-
-                    <label class="custom-file-label" for="customFile"
-                      >Upload image: Optional, only jpegs, jpg, or png</label
-                    >
-                    <br />
-                    <br />
-                  </div>
-                </div>
-              </div>
-              <div class="btn-toolbar justify-content-between">
-                <div class="btn-group">
-                  <button type="submit" class="btn btn-primary">share</button>
-                </div>
-              </div>
-            </form>
-            </div>
-          </div>
-          <!-- Post /////-->
-          <!-- image: image,
-          cloudinaryId: cloudinaryId,
-          postText: req.body.postText,
-          email: req.user.email,
-          stars: req.body.stars,
-          user: req.user.id,
-          likes: 0,
-          userName: req.user.userName,
-          profileImage: req.user.profileImage, -->
-          <!--- \\\\\\\Post-->
-          
-
-
+         
           <% for(var i=0; i<posts.length; i++) {%>
 
             <div class="card gedf-card">
@@ -227,7 +142,7 @@
                       />
                     </div>
                     <div class="ml-2">
-                      <div class="h5 m-0"> <a href="/<%= posts[i].user %>">@<%= posts[i].userName %></a></div>
+                      <div class="h5 m-0">@<%= posts[i].userName %></div>
                       <div class="h7 text-muted"><%= posts[i].email %></div>
                     </div>
                   </div>
@@ -278,9 +193,7 @@
                   
                   <% } 
                   %>
-                <a href="#" class="card-link"
-                  ><i class="fa fa-comment"></i> Comment</a
-                >
+                
                 <a href="#" class="card-link"
                   ><i class="fa fa-mail-forward"></i> Save</a
                 >
@@ -288,7 +201,22 @@
             </div>
  
            <% } %>
-        
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
 
@@ -297,7 +225,7 @@
             <div class="card-body">
               <h5 class="card-title">Followers</h5>
               <% allUsers.forEach(follower => { %>
-                <% if (user.followers.includes(follower._id)) { %>
+                <% if (currentUserPage.followers.includes(follower._id)) { %>
                 <div class="follower">
                   <img src="<%= follower.profileImage %>" width="45px" height="45px"  alt="Profile Image" class="rounded-circle">
                   <a href="/<%= follower._id %>"><%= follower.userName %></a>
@@ -307,9 +235,9 @@
               <% }) %>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Following</h5>
+              <h5 class="card-title">Followers</h5>
               <% allUsers.forEach(follower => { %>
-                <% if (follower.followers.includes(user._id)) { %>
+                <% if (follower.followers.includes(currentUserPage._id)) { %>
                 <div class="follower">
                   <img src="<%= follower.profileImage %>" width="45px" height="45px"  alt="Profile Image" class="rounded-circle">
                   <a href="/<%= follower._id %>"><%= follower.userName %></a>
@@ -320,7 +248,6 @@
             </div>
             
           </div>
-        </div>
       </div>
     </div>
 
@@ -351,7 +278,7 @@
             ></a>
           </div>
           <p>
-            &copy; 2023 Travel Haven! - All Rights Reserved.
+            &copy; 2023 Travel Haven- All Rights Reserved.
           </p>
         </div>
       </div>
