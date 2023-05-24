@@ -52,11 +52,7 @@ header {
   background-color: RoyalBlue;
 }
 
-.nav-link:hover {
-  background-color: black;
-  color: white !important;
-  border-bottom: 5px solid red;
-}
+
 
 .nav-link {
   border-radius: 10px;
